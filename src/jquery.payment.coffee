@@ -226,11 +226,11 @@ formatExpiry = (e) ->
 
   if /^\d$/.test(val) and val not in ['0', '1']
     e.preventDefault()
-    setTimeout -> $target.val("0#{val} / ")
+    setTimeout -> $target.val("0#{val}/")
 
   else if /^\d\d$/.test(val)
     e.preventDefault()
-    setTimeout -> $target.val("#{val} / ")
+    setTimeout -> $target.val("#{val}/")
 
 formatForwardExpiry = (e) ->
   digit = String.fromCharCode(e.which)
@@ -240,7 +240,7 @@ formatForwardExpiry = (e) ->
   val     = $target.val()
 
   if /^\d\d$/.test(val)
-    $target.val("#{val} / ")
+    $target.val("#{val}/")
 
 formatForwardSlashAndSpace = (e) ->
   which = String.fromCharCode(e.which)
@@ -250,7 +250,7 @@ formatForwardSlashAndSpace = (e) ->
   val     = $target.val()
 
   if /^\d$/.test(val) and val isnt '0'
-    $target.val("0#{val} / ")
+    $target.val("0#{val}/")
 
 formatBackExpiry = (e) ->
   $target = $(e.currentTarget)
@@ -502,17 +502,17 @@ $.payment.formatExpiry = (expiry) ->
   year = parts[3] || ''
 
   if year.length > 0
-    sep = ' / '
+    sep = '/'
 
-  else if sep is ' /'
+  else if sep is '/'
     mon = mon.substring(0, 1)
     sep = ''
 
   else if mon.length == 2 or sep.length > 0
-    sep = ' / '
+    sep = '/'
 
   else if mon.length == 1 and mon not in ['0', '1']
     mon = "0#{mon}"
-    sep = ' / '
+    sep = '/'
 
   return mon + sep + year
